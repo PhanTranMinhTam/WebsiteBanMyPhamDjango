@@ -1,0 +1,54 @@
+{% extends "pages/layoutAd.html" %} {% block title %} Trang chủ admin {% endblock %} {% block content %} {% load static %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="w-100 text-center p-3 text-danger"> THÊM 1 KHUYẾN MÃI MỚI</h2>
+            <form method="post" id="productForm">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="TenKM">Tên khuyến mãi</label>
+                    <input name="TenKM" type="text" class="form-control" id="TenKM" value="">
+                </div><br>
+                <div class="form-group">
+                    <label for="GiaGiam">Giá giảm</label>
+                    <input name="GiaGiam" type="text" class="form-control" id="GiaGiam" value="">
+                </div><br>
+
+                <!-- Button trigger modal -->
+                <div class="text-center" style=" display: flex; justify-content: center; ">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Thêm</button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Xác nhận thêm khuyến mãi</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                Bạn có muốn thêm khuyến mãi không?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                <button type="button" class="btn btn-danger" id="confirmAddButton">Đồng ý</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('confirmAddButton').addEventListener('click', function() {
+        document.getElementById('productForm').submit();
+    });
+</script>
+
+{% endblock %}

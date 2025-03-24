@@ -1,0 +1,52 @@
+{% extends "pages/layoutAd.html" %} {% block title %}Trang chủ admin{% endblock %} {% block content %} {% load static %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="w-100 text-center p-3 text-danger">Cập Nhật Khuyến Mãi</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="MaKM">Mã khuyến mãi</label>
+                    <input name="MaKM" type="text" class="form-control" id="name" value="{{ KhuyenMai.0 }}" readonly>
+                </div><br>
+                <div class="form-group">
+                    <label for="TenKM">Tên khuyến mãi</label>
+                    <input name="TenKM" type="text" class="form-control" id="name" value="{{ KhuyenMai.1 }}" required>
+                </div><br>
+                <div class="form-group">
+                    <label for="GiaGiam">Giá khuyến mãi</label>
+                    <input name="GiaGiam" type="text" class="form-control" id="price" value="{{ KhuyenMai.2 }}" required>
+                </div><br>
+
+                <!-- Button trigger modal -->
+                <div class="text-center" style=" display: flex; justify-content: center; ">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Cập Nhật</button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Xác nhận cập nhật sản phẩm</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Bạn có muốn cập nhật sản phẩm không?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                <button type="submit" class="btn btn-danger">Đồng ý</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
